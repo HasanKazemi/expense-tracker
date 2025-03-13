@@ -1,12 +1,20 @@
-import './App.css'
+import React from 'react';
+import TransactionForm from './components/TransactionForm';
+import TransactionList from './components/TransactionList';
+import PieChart from './components/PieChart';
+import { AppProvider } from './context/AppContext';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      
-    </>
-  )
-}
+    <AppProvider>
+      <div>
+        <h1>مدیریت هزینه‌ها</h1>
+        <TransactionForm />
+        <TransactionList />
+        <PieChart />
+      </div>
+    </AppProvider>
+  );
+};
 
-export default App
+export default App;
