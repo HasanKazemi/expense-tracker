@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { AppContext } from '../context/AppContext';
+import "./piechart.css"
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -25,7 +26,12 @@ const PieChart = () => {
     ],
   };
 
-  return <Pie data={data} />;
+  return (
+    <div className="pie-chart-container">
+      <h2>تحلیل هزینه‌ها</h2>
+      <Pie data={data} />
+    </div>
+  );
 };
 
 export default PieChart;
