@@ -9,13 +9,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const PieChart = () => {
   const { state } = useContext(AppContext);
 
-  // محاسبه مجموع هزینه‌ها برای هر دسته‌بندی
   const categories = [...new Set(state.transactions.map(transaction => transaction.category))];
   const data = {
     labels: categories,
     datasets: [
       {
-        label: 'هزینه‌ها',
+        label: 'Consts',
         data: categories.map(category =>
           state.transactions
             .filter(transaction => transaction.category === category)
@@ -28,7 +27,7 @@ const PieChart = () => {
 
   return (
     <div className="pie-chart-container">
-      <h2>تحلیل هزینه‌ها</h2>
+      <h2>Costs Analysis</h2>
       <Pie data={data} />
     </div>
   );

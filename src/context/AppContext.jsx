@@ -1,15 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 
-// حالت اولیه
 const initialState = {
   transactions: [],
-  categories: ['غذا', 'حمل‌ونقل', 'قبوض', 'تفریح'],
+  categories: ['Food', 'Transportation', 'Invoices', 'Entertainment'],
 };
 
-// ایجاد Context
 const AppContext = createContext(initialState);
 
-// Reducer برای مدیریت عملیات‌ها
 const appReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TRANSACTION':
@@ -37,17 +34,14 @@ const appReducer = (state, action) => {
   }
 };
 
-// Provider برای ارائه Context به کل برنامه
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // بارگذاری تراکنش‌ها از LocalStorage هنگام لود شدن برنامه
   useEffect(() => {
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
     dispatch({ type: 'INIT_TRANSACTIONS', payload: transactions });
   }, []);
 
-  // ذخیره تراکنش‌ها در LocalStorage هر زمان که تغییر می‌کنند
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(state.transactions));
   }, [state.transactions]);

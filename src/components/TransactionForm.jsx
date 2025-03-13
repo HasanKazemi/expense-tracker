@@ -22,7 +22,6 @@ const TransactionForm = () => {
 
     dispatch({ type: 'ADD_TRANSACTION', payload: newTransaction });
 
-    // پاک کردن فرم پس از ثبت
     setTitle('');
     setAmount('');
     setDate('');
@@ -32,7 +31,7 @@ const TransactionForm = () => {
   return (
     <form onSubmit={handleSubmit} className='transaction-form'>
       <div>
-        <label>عنوان:</label>
+        <label>Title:</label>
         <input
           type="text"
           value={title}
@@ -41,7 +40,7 @@ const TransactionForm = () => {
         />
       </div>
       <div>
-        <label>مبلغ:</label>
+        <label>Price:</label>
         <input
           type="number"
           value={amount}
@@ -50,7 +49,7 @@ const TransactionForm = () => {
         />
       </div>
       <div>
-        <label>تاریخ:</label>
+        <label>Date:</label>
         <input
           type="date"
           value={date}
@@ -59,9 +58,9 @@ const TransactionForm = () => {
         />
       </div>
       <div>
-        <label>دسته‌بندی:</label>
+        <label>Category:</label>
         <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-          <option value="">انتخاب کنید</option>
+          <option value="">Select...</option>
           {state.categories.map((cat, index) => (
             <option key={index} value={cat}>
               {cat}
@@ -69,7 +68,7 @@ const TransactionForm = () => {
           ))}
         </select>
       </div>
-      <button type="submit">ثبت تراکنش</button>
+      <button type="submit">Registration</button>
     </form>
   );
 };

@@ -9,7 +9,7 @@ const App = () => {
   return (
     <AppProvider>
       <div className="app">
-        <h1>مدیریت هزینه‌ها</h1>
+        <h1>Cost Management</h1>
         <TransactionForm />
         <TransactionList />
         <PieChart />
