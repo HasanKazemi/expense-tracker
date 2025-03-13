@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import "./transactionform.css"
 
 const TransactionForm = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -29,7 +30,7 @@ const TransactionForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='transaction-form'>
       <div>
         <label>عنوان:</label>
         <input
