@@ -3,11 +3,12 @@ import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import PieChart from './components/PieChart';
 import { AppProvider } from './context/AppContext';
+import './App.css'; // Import CSS
 
 const App = () => {
   return (
     <AppProvider>
-      <div>
+      <div className="app">
         <h1>مدیریت هزینه‌ها</h1>
         <TransactionForm />
         <TransactionList />
