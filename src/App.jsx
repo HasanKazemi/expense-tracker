@@ -1,38 +1,39 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import TransactionForm from './components/TransactionForm';
-import TransactionList from './components/TransactionList';
-import PieChart from './components/PieChart';
-import IncomeForm from './components/IncomeForm';
-import { AppProvider } from './context/AppContext';
-import './App.css';
 
-const App = () => {
-  return (
-    <AppProvider>
-      <Router>
-        <div className="app">
-          <h1>مدیریت هزینه‌ها و درآمدها</h1>
-          <nav>
-            <Link to="/">هزینه‌ها</Link> | <Link to="/income">درآمدها</Link>
-          </nav>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <TransactionForm />
-                  <TransactionList />
-                  <PieChart />
-                </>
-              }
-            />
-            <Route path="/income" element={<IncomeForm />} />
-          </Routes>
+import './App.css'
+import React from "react";
+import Menu from "./components/Menu/Menu.jsx";
+import ExpenseProvider from "./context/MoneyContext.jsx";
+import AddTransaction from "./components/Transactions/AddTransaction.jsx";
+import TransactionList from "./components/Transactions/TransactionList.jsx";
+import PieChartReports from "./components/Reports/PieChartReports.jsx";
+
+function App()
+{
+  const Layout = ({children})=>{
+    return (
+        <div className="w-full h-screen bg-gradient-to-br from-[#0E091B] via-[#150F30] to-[#2A2FA8] pt-[40px] px-[40px]">
+          <div className="flex flex-row gap-[24px] text-white">
+            <Menu/>
+            {children}
+          </div>
         </div>
-      </Router>
-    </AppProvider>
-  );
-};
+    )
+  }
 
-export default App;
+
+  return (
+      <ExpenseProvider>
+            <Layout>
+
+                <AddTransaction/>
+                <TransactionList/>
+                <PieChartReports/>
+
+            </Layout>
+      </ExpenseProvider>
+  )
+}
+
+export default App
+
+
